@@ -24,7 +24,7 @@ import com.gwtplatform.mvp.client.annotations.GaAccount;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
-import com.gwtskeleton.client.application.ApplicationModule;
+import com.gwtskeleton.client.application.main.ApplicationModule;
 import com.gwtskeleton.client.place.NameTokens;
 
 

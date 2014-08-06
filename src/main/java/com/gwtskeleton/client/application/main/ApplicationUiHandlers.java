@@ -14,10 +14,10 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application;
+package com.gwtskeleton.client.application.main;
 
 import com.gwtplatform.mvp.client.UiHandlers;
-import com.gwtskeleton.client.application.ApplicationPresenter.Tab;
+import com.gwtskeleton.client.application.main.ApplicationPresenter.Tab;
 
 
 public interface ApplicationUiHandlers extends UiHandlers {

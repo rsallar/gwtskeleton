@@ -21,6 +21,7 @@
   <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
   <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
   <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+  <inherits name="com.google.gwt.logging.Logging"/>
   
   <!-- Specify the app entry point class.                         -->
  

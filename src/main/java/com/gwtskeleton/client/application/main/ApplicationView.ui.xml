@@ -6,6 +6,7 @@
 		<b:NavTabs>
 			<b:TabListItem ui:field="tab1" active="true" dataTarget="#tab1" text="Domain Classifier" />
 			<b:TabListItem ui:field="tab2" dataTarget="#tab2" text="tab2" />
+			<b:TabListItem ui:field="tab3" dataTarget="#tab3" text="tab3" />
 		</b:NavTabs>
 
 		<b:TabContent>
@@ -13,6 +14,8 @@
 				active="true" b:id="tab1">
 			</b:TabPane>
 			<b:TabPane fade="true" b:id="tab2">
+			</b:TabPane>
+			<b:TabPane fade="true" b:id="tab3">
 			</b:TabPane>
 		</b:TabContent>
 	</b:Panel>

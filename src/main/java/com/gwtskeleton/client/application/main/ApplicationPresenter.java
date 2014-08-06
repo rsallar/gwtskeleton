@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application;
+package com.gwtskeleton.client.application.main;
 
 import java.util.logging.Logger;
 
@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
+import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -30,6 +31,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.gwtskeleton.client.application.classifier.ClassifierPresenter;
+import com.gwtskeleton.client.application.dropdown.DropdownPresenter;
 import com.gwtskeleton.client.place.NameTokens;
 import com.gwtskeleton.client.place.TokenParameters;
 
@@ -44,10 +46,10 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
     }
     
     public enum Tab{
-    	TAB1, TAB2;
+    	TAB1, TAB2, TAB3;
     }
 
-    public static final Object TYPE_classifer = new Object();
+    public static final Object MainSlot = new Object();
     
     public interface MyView extends View, HasUiHandlers<ApplicationUiHandlers> {
         void resetAndFocus();
@@ -58,6 +60,9 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
     private final PlaceManager placeManager;
     
     @Inject ClassifierPresenter classifier;
+    @Inject DropdownPresenter dropdown;
+    
+    PresenterWidget<?> current = classifier;
 
     @Inject
     ApplicationPresenter(EventBus eventBus,
@@ -75,8 +80,8 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
     @Override
     protected void onBind() {
         super.onBind();
-
-        setInSlot(TYPE_classifer, classifier);
+       
+        setInSlot(MainSlot, current);
     }
 
 
@@ -104,15 +109,23 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
 
 	@Override
 	public void clickOn(Tab tab) {
-	
+		
 		switch(tab){
 		case TAB1 : 
-			//setInSlot(TYPE_classifer, classifier);
+			removeFromSlot(MainSlot, current);
+			current = classifier;
+			setInSlot(MainSlot, classifier);
 			break;
 		case TAB2:
-			//removeFromSlot(TYPE_classifer, classifier);	
+			removeFromSlot(MainSlot, current);
+			current = classifier;	
+			break;
+		case TAB3:
+			removeFromSlot(MainSlot, current);
+			current = dropdown;
 			break;
 		}
 		
+		setInSlot(MainSlot, current);
 	}
 }

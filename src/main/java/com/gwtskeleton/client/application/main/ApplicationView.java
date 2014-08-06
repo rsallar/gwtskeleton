@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application;
+package com.gwtskeleton.client.application.main;
 
 import java.util.logging.Logger;
 
@@ -30,7 +30,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-import com.gwtskeleton.client.application.ApplicationPresenter.Tab;
+import com.gwtskeleton.client.application.main.ApplicationPresenter.Tab;
 
 public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> implements ApplicationPresenter.MyView {
     interface Binder extends UiBinder<Widget, ApplicationView> {
@@ -42,6 +42,8 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     TabListItem tab1;
     @UiField
     TabListItem tab2;
+    @UiField
+    TabListItem tab3;
     
     @UiField
     TabPane tab1Pane;
@@ -53,7 +55,7 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     
     @Override
     public void setInSlot(Object slot, IsWidget content) {
-        if (slot == ApplicationPresenter.TYPE_classifer) {
+        if (slot == ApplicationPresenter.MainSlot) {
         	logger.fine("adding tab1 widget");
         	tab1Pane.add(content);
         }
@@ -61,7 +63,7 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     
     @Override
     public void removeFromSlot(Object slot, IsWidget content) {
-        if (slot == ApplicationPresenter.TYPE_classifer) {
+        if (slot == ApplicationPresenter.MainSlot) {
         	logger.fine("removing tab1 widget");
         	tab1Pane.remove(content);
         }
@@ -86,5 +88,9 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     @UiHandler("tab2")
     void onClickTab2(ClickEvent event) {
     	getUiHandlers().clickOn(Tab.TAB2);
+    }	
+    @UiHandler("tab3")
+    void onClickTab3(ClickEvent event) {
+    	getUiHandlers().clickOn(Tab.TAB3);
     }	
 }

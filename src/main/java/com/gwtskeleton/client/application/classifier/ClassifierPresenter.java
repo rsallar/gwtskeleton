@@ -76,21 +76,18 @@ implements ClassifierUiHandlers {
 		dispatcher.execute(service.getBooks(), new AsyncCallback<List<Book>>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
+				//Window.alert(caught.getMessage());
 				caught.printStackTrace();
 				// getView().setServerResponse("An error occured: " + caught.getMessage());
 			}
 
 			@Override
 			public void onSuccess(List<Book> result) {
-				Window.alert(""+result.size());
+				//Window.alert(""+result.size());
 
 			}
 		});
-		
-		
-				
-		
+
 	}
 
 	@Override
