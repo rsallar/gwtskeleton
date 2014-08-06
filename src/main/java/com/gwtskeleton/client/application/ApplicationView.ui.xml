@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+
+	<b:Panel >
+		<b:NavTabs>
+			<b:TabListItem ui:field="tab1" active="true"
+				dataTarget="#tab1" text="Domain Classifier" />
+			<b:TabListItem ui:field="tab2" dataTarget="#tab2" text="tab2" />
+		</b:NavTabs>
+
+		<b:TabContent>
+			<b:TabPane ui:field="tab1Pane" fade="true" in="true"
+				active="true" b:id="tab1">
+			</b:TabPane>
+			<b:TabPane fade="true" b:id="tab2">
+			</b:TabPane>
+		</b:TabContent>
+	</b:Panel>
+	
+</ui:UiBinder>
+

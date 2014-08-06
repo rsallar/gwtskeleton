@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <!-- Servlets -->
+  <servlet>
+   <servlet-name>proxy</servlet-name>
+   <servlet-class>com.gwtskeleton.server.ProxyServlet</servlet-class>
+   <init-param>
+      <param-name>hostname</param-name>
+      <param-value>pepito</param-value>
+   </init-param>
+   </servlet>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>test.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

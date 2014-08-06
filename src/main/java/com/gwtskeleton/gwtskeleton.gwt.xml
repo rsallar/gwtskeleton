@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='gwtskeleton'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User' />
+
+  <add-linker name="xsiframe"/>
+  
+  <!-- We need the JUnit module in the main module,               -->
+  <!-- otherwise eclipse complains (Google plugin bug?)           -->
+  <inherits name='com.google.gwt.junit.JUnit' />
+
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+  <inherits name='com.google.gwt.user.theme.standard.Standard' />
+  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+  <!-- Other module inherits                                      -->
+
+  <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
+  <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
+  <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+  
+  <!-- Specify the app entry point class.                         -->
+ 
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client' />
+  <source path='shared' />
+  
+  <extend-configuration-property name="gin.ginjector.modules" value="com.gwtskeleton.client.gin.ClientModule"/>
+
+</module>
