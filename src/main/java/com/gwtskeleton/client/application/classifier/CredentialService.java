@@ -3,19 +3,16 @@ package com.gwtskeleton.client.application.classifier;
 import java.util.List;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 
 import com.gwtplatform.dispatch.rest.shared.RestAction;
-import com.gwtplatform.dispatch.rest.shared.RestService;
-import com.gwtskeleton.client.domain.FacetedField;
+import com.gwtskeleton.shared.Book;
 
-@Path("/gwttest")
+@Path("/data")
 public interface CredentialService{
 	
-	@GET @Path("/data")
-    RestAction<List<String>> getTestData();
+	@GET @Path("/books")
+    RestAction<List<Book>> getBooks();
 	
  
 	/*@GET @Path("/statistics/countByPortalDomain")

@@ -4,8 +4,7 @@
 
 	<b:Panel >
 		<b:NavTabs>
-			<b:TabListItem ui:field="tab1" active="true"
-				dataTarget="#tab1" text="Domain Classifier" />
+			<b:TabListItem ui:field="tab1" active="true" dataTarget="#tab1" text="Domain Classifier" />
 			<b:TabListItem ui:field="tab2" dataTarget="#tab2" text="tab2" />
 		</b:NavTabs>
 

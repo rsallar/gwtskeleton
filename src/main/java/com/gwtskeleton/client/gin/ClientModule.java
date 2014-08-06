@@ -41,7 +41,7 @@ public class ClientModule extends AbstractPresenterModule {
     	install(new ApplicationModule());
       
     	
-        bindConstant().annotatedWith(RestApplicationPath.class).to("http://localhost:8080/afapi/v1");  
+        bindConstant().annotatedWith(RestApplicationPath.class).to("http://127.0.0.1:8888");
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.home);
         bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.home);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.home);

@@ -28,7 +28,7 @@ import com.gwtplatform.dispatch.rest.shared.RestDispatch;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.PresenterWidget;
 import com.gwtplatform.mvp.client.View;
-import com.gwtskeleton.client.domain.FacetedField;
+import com.gwtskeleton.shared.Book;
 
 public class ClassifierPresenter extends PresenterWidget<ClassifierPresenter.MyView>
 implements ClassifierUiHandlers {
@@ -73,16 +73,17 @@ implements ClassifierUiHandlers {
 		}
 
 
-		dispatcher.execute(service.getTestData(), new AsyncCallback<List<String>>() {
+		dispatcher.execute(service.getBooks(), new AsyncCallback<List<Book>>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert(caught.getMessage());
+				caught.printStackTrace();
 				// getView().setServerResponse("An error occured: " + caught.getMessage());
 			}
 
 			@Override
-			public void onSuccess(List<String> result) {
-				//Window.alert(""+result.size());
+			public void onSuccess(List<Book> result) {
+				Window.alert(""+result.size());
 
 			}
 		});
