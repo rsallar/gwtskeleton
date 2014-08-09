@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application.dropdown;
+package com.gwtskeleton.client.application.widgets.dropdown;
 
 import com.gwtplatform.mvp.client.UiHandlers;
 

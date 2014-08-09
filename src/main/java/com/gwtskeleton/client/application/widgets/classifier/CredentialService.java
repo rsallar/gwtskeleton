@@ -1,4 +1,4 @@
-package com.gwtskeleton.client.application.classifier;
+package com.gwtskeleton.client.application.widgets.classifier;
 
 import java.util.List;
 

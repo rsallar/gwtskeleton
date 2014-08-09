@@ -1,4 +1,4 @@
-package com.gwtskeleton.client.application.home;
+package com.gwtskeleton.client.application.widgets.home;
 
 /*
  * #%L

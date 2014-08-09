@@ -14,24 +14,32 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application.classifier;
+package com.gwtskeleton.client.application.widgets.classifier;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.shared.RestDispatch;
 import com.gwtplatform.mvp.client.HasUiHandlers;
-import com.gwtplatform.mvp.client.PresenterWidget;
+import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
+import com.gwtplatform.mvp.client.annotations.NameToken;
+import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtskeleton.client.application.ApplicationPresenter;
+import com.gwtskeleton.client.application.place.NameTokens;
 import com.gwtskeleton.shared.Book;
 
-public class ClassifierPresenter extends PresenterWidget<ClassifierPresenter.MyView>
-implements ClassifierUiHandlers {
+public class ClassifierPresenter extends Presenter<ClassifierPresenter.MyView, ClassifierPresenter.MyProxy> implements ClassifierUiHandlers {
+	
+	@NameToken(NameTokens.CLASSIFIER)
+	@ProxyCodeSplit
+	public interface MyProxy extends ProxyPlace<ClassifierPresenter> {
+	}
 
 	Logger logger = Logger.getLogger(ClassifierPresenter.class.getName());
 
@@ -49,10 +57,11 @@ implements ClassifierUiHandlers {
 	ClassifierPresenter(EventBus eventBus,
 			MyView view,
 			RestDispatch dispatcher,
+			MyProxy proxy,
 			CredentialService service
 			) {
 
-		super(eventBus, view);
+		super(eventBus, view, proxy, ApplicationPresenter.TYPE_SetMainContent);
 		logger.fine("building classifier");
 		
 		this.dispatcher = dispatcher;

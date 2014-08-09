@@ -4,7 +4,7 @@
 	xmlns:b.gwt="urn:import:org.gwtbootstrap3.client.ui.gwt">
 
 	<ui:style
-		type="com.gwtskeleton.client.application.classifier.ClassifierView.ClassifierViewStyle">
+		type="com.gwtskeleton.client.application.widgets.classifier.ClassifierView.ClassifierViewStyle">
 		
 		.hovered {
 			border-style: dasheds;

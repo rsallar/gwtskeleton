@@ -23,6 +23,9 @@
                         <b:NavbarNav>
                             <b:AnchorListItem text="dropdown" targetHistoryToken="{nameTokens.dropdown}"/>
                         </b:NavbarNav>
+                         <b:NavbarNav>
+                            <b:AnchorListItem text="classifier" targetHistoryToken="{nameTokens.classifier}"/>
+                        </b:NavbarNav>
                      </b:NavbarCollapse>   
                  </b:Container>
             </b:Navbar> 
