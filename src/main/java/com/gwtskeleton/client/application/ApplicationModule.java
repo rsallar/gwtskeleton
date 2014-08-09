@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application.main;
+package com.gwtskeleton.client.application;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +27,8 @@ import com.gwtskeleton.client.application.classifier.ClassifierPresenter;
 import com.gwtskeleton.client.application.classifier.ClassifierView;
 import com.gwtskeleton.client.application.dropdown.DropdownPresenter;
 import com.gwtskeleton.client.application.dropdown.DropdownView;
+import com.gwtskeleton.client.application.home.HomePresenter;
+import com.gwtskeleton.client.application.home.HomeView;
 
 public class ApplicationModule extends AbstractPresenterModule {
 	Logger logger = Logger.getLogger(ApplicationModule.class.getName());
@@ -41,9 +43,11 @@ public class ApplicationModule extends AbstractPresenterModule {
 		});
 		
 		bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,ApplicationPresenter.MyProxy.class);
-
-		bindPresenterWidget(ClassifierPresenter.class, ClassifierPresenter.MyView.class, ClassifierView.class);
-		bindPresenterWidget(DropdownPresenter.class, DropdownPresenter.MyView.class, DropdownView.class);
+		bindPresenter(HomePresenter.class, HomePresenter.MyView.class, HomeView.class, HomePresenter.MyProxy.class);
+		bindPresenter(DropdownPresenter.class, DropdownPresenter.MyView.class, DropdownView.class, DropdownPresenter.MyProxy.class);
+		//bindPresenter(ClassifierPresenter.class, ClassifierPresenter.MyView.class, ClassifierView.class);
+		
+		
 
 		
 	}

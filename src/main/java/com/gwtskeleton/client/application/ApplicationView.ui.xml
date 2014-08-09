@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+
+    <ui:with field="nameTokens" type="com.gwtskeleton.client.application.place.NameTokens"/>
+    
+     <ui:style>
+        .push {
+            padding-top: 70px;
+        }
+    </ui:style>
+    
+	 <g:ScrollPanel>
+		 <b:Container>
+            <b:Navbar position="FIXED_TOP">
+                <b:Container>
+                    <b:NavbarHeader>
+                        <b:NavbarBrand targetHistoryToken="{nameTokens.home}" ui:field="brand">GWT Skeleton!
+                        </b:NavbarBrand>
+                        <b:NavbarCollapseButton dataTarget="#navbar-collapse"/>
+                    </b:NavbarHeader>
+                     <b:NavbarCollapse b:id="navbar-collapse">
+                        <b:NavbarNav>
+                            <b:AnchorListItem text="dropdown" targetHistoryToken="{nameTokens.dropdown}"/>
+                        </b:NavbarNav>
+                     </b:NavbarCollapse>   
+                 </b:Container>
+            </b:Navbar> 
+            <!-- Container Content -->
+            <g:SimplePanel addStyleNames="{style.push}" ui:field="contentContainer"/>
+
+        </b:Container>          
+
+	 </g:ScrollPanel>
+	
+</ui:UiBinder>
+

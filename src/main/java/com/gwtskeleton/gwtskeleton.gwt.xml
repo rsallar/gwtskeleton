@@ -30,6 +30,10 @@
   <source path='client' />
   <source path='shared' />
   
+  <set-property name='gwt.logging.popupHandler' value='DISABLED'/> 
+  <set-property name="compiler.stackMode" value="emulated" />
+  <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
+  <set-configuration-property name="gwtp.prebootstrapper" value="com.gwtskeleton.client.gin.PreBootstrapperImpl"/> 
   <extend-configuration-property name="gin.ginjector.modules" value="com.gwtskeleton.client.gin.ClientModule"/>
 
 </module>
