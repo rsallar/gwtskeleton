@@ -19,6 +19,7 @@ Check the Rest service in Presenter and check how the View works.
 Projects which are being used:
 
 GWT-Platform -> https://github.com/ArcBees/GWTP/wiki
+
 Gwt-bootsrap -> http://gwtbootstrap3.github.io/gwtbootstrap3-demo/
  
 
