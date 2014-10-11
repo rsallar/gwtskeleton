@@ -9,8 +9,8 @@
             padding-top: 70px;
         }
     </ui:style>
-    
-	 <b:Container>
+    <g:ScrollPanel>
+        <b:Container>
             <b:Navbar position="FIXED_TOP">
                  <b:Container>
                     <b:NavbarHeader>
@@ -27,11 +27,18 @@
                         </b:NavbarNav>
                      </b:NavbarCollapse>   
                  </b:Container>
-            </b:Navbar> 
+      </b:Navbar> 
+	        <b:Navbar styleName="sidebar">
+	            
+	            
+	        </b:Navbar>
+	            
             <!-- Container Content -->
             <g:SimplePanel addStyleNames="{style.push}" ui:field="contentContainer"/>
 
-        </b:Container>          
+    </b:Container>
+
+    </g:ScrollPanel>          
 
 </ui:UiBinder>
 

@@ -29,6 +29,8 @@ import com.gwtskeleton.client.application.widgets.dropdown.DropdownPresenter;
 import com.gwtskeleton.client.application.widgets.dropdown.DropdownView;
 import com.gwtskeleton.client.application.widgets.home.HomePresenter;
 import com.gwtskeleton.client.application.widgets.home.HomeView;
+import com.gwtskeleton.client.application.widgets.lateral.LateralPresenter;
+import com.gwtskeleton.client.application.widgets.lateral.LateralView;
 
 public class ApplicationModule extends AbstractPresenterModule {
 	Logger logger = Logger.getLogger(ApplicationModule.class.getName());
@@ -46,5 +48,7 @@ public class ApplicationModule extends AbstractPresenterModule {
 		bindPresenter(HomePresenter.class, HomePresenter.MyView.class, HomeView.class, HomePresenter.MyProxy.class);
 		bindPresenter(DropdownPresenter.class, DropdownPresenter.MyView.class, DropdownView.class, DropdownPresenter.MyProxy.class);
 		bindPresenter(BooksClassifierPresenter.class, BooksClassifierPresenter.MyView.class, BooksClassifierView.class, BooksClassifierPresenter.MyProxy.class);
+		bindPresenter(LateralPresenter.class, LateralPresenter.MyView.class, LateralView.class, LateralPresenter.MyProxy.class);
+		
 	}
 }

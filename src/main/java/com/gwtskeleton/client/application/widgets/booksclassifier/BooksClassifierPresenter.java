@@ -57,7 +57,7 @@ public class BooksClassifierPresenter extends Presenter<BooksClassifierPresenter
 	@Inject
 	BooksClassifierPresenter(EventBus eventBus,MyView view,RestDispatch dispatcher,MyProxy proxy,BooksCredentialService service) {
 
-		super(eventBus, view, proxy, ApplicationPresenter.TYPE_SetMainContent);
+		super(eventBus, view, proxy, ApplicationPresenter.MAIN_SLOT);
 		logger.fine("building classifier");
 		
 		this.dispatcher = dispatcher;

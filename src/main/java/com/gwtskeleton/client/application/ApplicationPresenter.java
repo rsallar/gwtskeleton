@@ -39,7 +39,9 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
     }
     
     @ContentSlot
-    public static final Type<RevealContentHandler<?>> TYPE_SetMainContent = new Type<RevealContentHandler<?>>();
+    public static final Type<RevealContentHandler<?>> MAIN_SLOT = new Type<RevealContentHandler<?>>();
+    @ContentSlot
+    public static final Type<RevealContentHandler<?>> LATERAL_SLOT = new Type<RevealContentHandler<?>>();
     
     public interface MyView extends View{
    
