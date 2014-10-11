@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application.widgets.classifier;
+package com.gwtskeleton.client.application.widgets.booksclassifier;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -34,32 +34,29 @@ import com.gwtskeleton.client.application.ApplicationPresenter;
 import com.gwtskeleton.client.application.place.NameTokens;
 import com.gwtskeleton.shared.Book;
 
-public class ClassifierPresenter extends Presenter<ClassifierPresenter.MyView, ClassifierPresenter.MyProxy> implements ClassifierUiHandlers {
+public class BooksClassifierPresenter extends Presenter<BooksClassifierPresenter.MyView, BooksClassifierPresenter.MyProxy> implements BooksClassifierUiHandlers {
 	
 	@NameToken(NameTokens.CLASSIFIER)
 	@ProxyCodeSplit
-	public interface MyProxy extends ProxyPlace<ClassifierPresenter> {
+	public interface MyProxy extends ProxyPlace<BooksClassifierPresenter> {
 	}
 
-	Logger logger = Logger.getLogger(ClassifierPresenter.class.getName());
+	Logger logger = Logger.getLogger(BooksClassifierPresenter.class.getName());
 
-	public interface MyView extends View, HasUiHandlers<ClassifierUiHandlers> {
-		void addDomain(String domain);
-		void addIndustry(String industry, int count);
+	public interface MyView extends View, HasUiHandlers<BooksClassifierUiHandlers> {
+		
+		//void addIndustry(String industry, int count);
+		void addBooks(List<Book> books);
+		void addGenres(List<String> genres);
 
 	}
 
 	private final RestDispatch dispatcher;
-	private final CredentialService service;
+	private final BooksCredentialService service;
 	
 
 	@Inject
-	ClassifierPresenter(EventBus eventBus,
-			MyView view,
-			RestDispatch dispatcher,
-			MyProxy proxy,
-			CredentialService service
-			) {
+	BooksClassifierPresenter(EventBus eventBus,MyView view,RestDispatch dispatcher,MyProxy proxy,BooksCredentialService service) {
 
 		super(eventBus, view, proxy, ApplicationPresenter.TYPE_SetMainContent);
 		logger.fine("building classifier");
@@ -76,28 +73,40 @@ public class ClassifierPresenter extends Presenter<ClassifierPresenter.MyView, C
 	protected void onBind(){
 		logger.fine("binding classifier");
 				
-		for(int i = 0; i<10; i++){
-			getView().addDomain("domain"+i);
-			getView().addIndustry("industry"+i, i);
-		}
+		bindServerData();
 
+	}
 
+	private void bindServerData() {
 		dispatcher.execute(service.getBooks(), new AsyncCallback<List<Book>>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				//Window.alert(caught.getMessage());
 				caught.printStackTrace();
-				// getView().setServerResponse("An error occured: " + caught.getMessage());
 			}
 
 			@Override
 			public void onSuccess(List<Book> result) {
-				//Window.alert(""+result.size());
-
+				getView().addBooks(result);
 			}
 		});
+		
+		dispatcher.execute(service.getGenres(), new AsyncCallback<List<String>>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				caught.printStackTrace();
+			}
 
+			@Override
+			public void onSuccess(List<String> result) {
+				getView().addGenres(result);
+			}
+		});
+		
+		
 	}
+	
+	
+	
 
 	@Override
 	protected void onReset() {

@@ -10,10 +10,9 @@
         }
     </ui:style>
     
-	 <g:ScrollPanel>
-		 <b:Container>
+	 <b:Container>
             <b:Navbar position="FIXED_TOP">
-                <b:Container>
+                 <b:Container>
                     <b:NavbarHeader>
                         <b:NavbarBrand targetHistoryToken="{nameTokens.home}" ui:field="brand">GWT Skeleton!
                         </b:NavbarBrand>
@@ -34,7 +33,5 @@
 
         </b:Container>          
 
-	 </g:ScrollPanel>
-	
 </ui:UiBinder>
 

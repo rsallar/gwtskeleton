@@ -1,4 +1,4 @@
-package com.gwtskeleton.client.application.widgets.classifier;
+package com.gwtskeleton.client.application.widgets.booksclassifier;
 
 import java.util.List;
 
@@ -9,10 +9,13 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 import com.gwtskeleton.shared.Book;
 
 @Path("/data")
-public interface CredentialService{
+public interface BooksCredentialService{
 	
 	@GET @Path("/books")
     RestAction<List<Book>> getBooks();
+	
+	@GET @Path("/books/genres")
+    RestAction<List<String>> getGenres();
 	
  
 	/*@GET @Path("/statistics/countByPortalDomain")

@@ -9,10 +9,27 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>GWT Maven Archetype</name>
+	
+	<repositories>
+		<repository>
+			<id>codehaus</id>
+			<url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
+			<snapshots><enabled>true</enabled></snapshots>
+			<releases><enabled>true</enabled></releases>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+	<pluginRepository>
+			<id>codehaus</id>
+			<url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
+			<snapshots><enabled>true</enabled></snapshots>
+			<releases><enabled>true</enabled></releases>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<properties>
 		<!-- Convenience property to set the GWT version -->
-		<gwtVersion>2.6.1</gwtVersion>
+		<gwtVersion>2.7.0-SNAPSHOT</gwtVersion>
 		<!-- GWT needs at least java 1.5 -->
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,13 +37,13 @@
 
 	<dependencies>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>launcher</groupId>
 			<artifactId>launcher</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/lib/superdevmode-launcher-legacy.jar</systemPath>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -43,7 +60,7 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-codeserver</artifactId>
-			<version>2.6.1</version>
+			<version>${gwtVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -68,13 +85,13 @@
 		<dependency>
 			<groupId>com.gwtplatform</groupId>
 			<artifactId>gwtp-mvp-client</artifactId>
-			<version>1.3</version>
+			<version>1.3.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.gwtplatform</groupId>
 			<artifactId>gwtp-dispatch-rest</artifactId>
-			<version>1.3</version>
+			<version>1.3.1</version>
 		</dependency>
 
 		<dependency>
@@ -154,7 +171,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.6.1</version>
+				<version>${gwtVersion}</version>
 				<executions>
 					<execution>
 						<goals>

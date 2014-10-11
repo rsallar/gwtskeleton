@@ -1,5 +1,6 @@
 package com.gwtskeleton.shared;
 
+
 public class Book {
 	
 	private String name;
@@ -18,4 +19,5 @@ public class Book {
 		this.name = name;
 	}
 
+	
 }

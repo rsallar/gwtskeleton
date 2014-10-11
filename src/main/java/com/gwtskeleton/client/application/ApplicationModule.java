@@ -23,8 +23,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.user.client.Window;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
-import com.gwtskeleton.client.application.widgets.classifier.ClassifierPresenter;
-import com.gwtskeleton.client.application.widgets.classifier.ClassifierView;
+import com.gwtskeleton.client.application.widgets.booksclassifier.BooksClassifierPresenter;
+import com.gwtskeleton.client.application.widgets.booksclassifier.BooksClassifierView;
 import com.gwtskeleton.client.application.widgets.dropdown.DropdownPresenter;
 import com.gwtskeleton.client.application.widgets.dropdown.DropdownView;
 import com.gwtskeleton.client.application.widgets.home.HomePresenter;
@@ -45,6 +45,6 @@ public class ApplicationModule extends AbstractPresenterModule {
 		bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,ApplicationPresenter.MyProxy.class);
 		bindPresenter(HomePresenter.class, HomePresenter.MyView.class, HomeView.class, HomePresenter.MyProxy.class);
 		bindPresenter(DropdownPresenter.class, DropdownPresenter.MyView.class, DropdownView.class, DropdownPresenter.MyProxy.class);
-		bindPresenter(ClassifierPresenter.class, ClassifierPresenter.MyView.class, ClassifierView.class, ClassifierPresenter.MyProxy.class);
+		bindPresenter(BooksClassifierPresenter.class, BooksClassifierPresenter.MyView.class, BooksClassifierView.class, BooksClassifierPresenter.MyProxy.class);
 	}
 }

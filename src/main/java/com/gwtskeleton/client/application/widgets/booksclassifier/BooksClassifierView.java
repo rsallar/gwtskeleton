@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application.widgets.classifier;
+package com.gwtskeleton.client.application.widgets.booksclassifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +43,12 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.gwtskeleton.shared.Book;
 
-public class ClassifierView extends ViewWithUiHandlers<ClassifierUiHandlers> implements ClassifierPresenter.MyView {
-	interface Binder extends UiBinder<Widget, ClassifierView> {
+public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHandlers> implements BooksClassifierPresenter.MyView {
+	interface Binder extends UiBinder<Widget, BooksClassifierView> {
 	}
-	Logger logger = Logger.getLogger(ClassifierView.class.getName());
+	Logger logger = Logger.getLogger(BooksClassifierView.class.getName());
 	@UiField
 	ListGroup list1;
 
@@ -61,43 +62,46 @@ public class ClassifierView extends ViewWithUiHandlers<ClassifierUiHandlers> imp
 	public interface ClassifierViewStyle extends CssResource {
 	    String hovered();
 	    String dragInProcess();
-	    String glow();
+	    String fluid();
 	}
 
 	@Inject
-	ClassifierView(Binder uiBinder) {
+	BooksClassifierView(Binder uiBinder) {
 		logger.fine("building classifier view");
 
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
 	@Override
-	public void addDomain(String domain) {
-		ListGroupItem item = new ListGroupItem();
-		item.setText(domain);
-		item.getElement().setDraggable(Element.DRAGGABLE_TRUE);
-		item.addDomHandler(dragStartHandler, DragStartEvent.getType());
-		list1.add(item);
+	public void addBooks(List<Book> books) {
+		for(Book book : books){
+			ListGroupItem item = new ListGroupItem();
+			item.setText(book.getName());
+			item.getElement().setDraggable(Element.DRAGGABLE_TRUE);
+			item.addDomHandler(dragStartHandler, DragStartEvent.getType());
+			list1.add(item);	
+		}
 	}
-
-
+	
+	
 	@Override
-	public void addIndustry(String industry, int count) {
-		ListGroupItem item = new ListGroupItem();
-		item.setText(industry);
-		Badge badge = new Badge();
-		badge.setText(String.valueOf(count));
+	public void addGenres(List<String> genres) {
 		
+		for(String genre: genres){
+			ListGroupItem item = new ListGroupItem();
+			item.setText(genre);
+			Badge badge = new Badge();
+			badge.setText(String.valueOf(0));
+						
+			item.add(badge);
+			item.addDomHandler(dropHandler, DropEvent.getType());
+			item.addDomHandler(dragLeaveHandler, DragLeaveEvent.getType());
+			item.addDomHandler(dragEnterHandler, DragEnterEvent.getType());
+			item.addDomHandler(dragOverHandler, DragOverEvent.getType());
+									
+			list2.add(item);
+		}
 		
-		item.add(badge);
-		item.addDomHandler(dropHandler, DropEvent.getType());
-		item.addDomHandler(dragLeaveHandler, DragLeaveEvent.getType());
-		item.addDomHandler(dragEnterHandler, DragEnterEvent.getType());
-		item.addDomHandler(dragOverHandler, DragOverEvent.getType());
-		
-		//item.getWidget(0).addDomHandler(handler, type)
-		
-		list2.add(item);
 	}
 	
 	private DragOverHandler dragOverHandler = new DragOverHandler(){
@@ -113,19 +117,15 @@ public class ClassifierView extends ViewWithUiHandlers<ClassifierUiHandlers> imp
 		@Override
 		public void onDrop(DropEvent event) {
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
-			
 			lgi.setType(ListGroupItemType.DEFAULT);
-			Badge badge = (Badge)lgi.getWidget(1);
-			
-			//badge.removeStyleName(style.glow());
-			badge.addStyleName(style.glow());
-			
 			event.preventDefault();
-			String domain = event.getData("domain");
-			getUiHandlers().save(domain,lgi.getText(), items.indexOf(lgi));
-			//lgi.setText(lgi.getText() + "  " + domain);
-			//lgi.setType(ListGroupItemType.SUCCESS);
-			//lgi.setText("...");
+			
+			Badge badge = ((Badge)(lgi.getWidget(0)));
+			int currentNum = Integer.valueOf(badge.getText());
+			badge.setText(String.valueOf(currentNum+1));
+			
+			String genre = event.getData("data");
+			getUiHandlers().save(genre ,lgi.getText(), items.indexOf(lgi));
 
 			event.getSource();
 		}
@@ -148,7 +148,7 @@ public class ClassifierView extends ViewWithUiHandlers<ClassifierUiHandlers> imp
 		@Override
 		public void onDragStart(DragStartEvent event) {
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
-			event.setData("domain", lgi.getText());	
+			event.setData("data", lgi.getText());	
 		}
 
 	};
@@ -163,5 +163,7 @@ public class ClassifierView extends ViewWithUiHandlers<ClassifierUiHandlers> imp
 			lgi.addStyleName(style.dragInProcess());
 		}
 	};
+
+	
 
 }

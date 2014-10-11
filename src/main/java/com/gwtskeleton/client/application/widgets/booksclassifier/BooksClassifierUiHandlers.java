@@ -14,12 +14,12 @@
  * the License.
  */
 
-package com.gwtskeleton.client.application.widgets.classifier;
+package com.gwtskeleton.client.application.widgets.booksclassifier;
 
 import com.gwtplatform.mvp.client.UiHandlers;
 
 
-public interface ClassifierUiHandlers extends UiHandlers {
+public interface BooksClassifierUiHandlers extends UiHandlers {
     void save(String portalDomain, String portalIndustry, int widgetIndex);
     
 }
