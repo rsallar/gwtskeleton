@@ -44,8 +44,7 @@ public class BooksClassifierPresenter extends Presenter<BooksClassifierPresenter
 	Logger logger = Logger.getLogger(BooksClassifierPresenter.class.getName());
 
 	public interface MyView extends View, HasUiHandlers<BooksClassifierUiHandlers> {
-		
-		//void addIndustry(String industry, int count);
+	
 		void addBooks(List<Book> books);
 		void addGenres(List<String> genres);
 
@@ -106,15 +105,13 @@ public class BooksClassifierPresenter extends Presenter<BooksClassifierPresenter
 	}
 	
 	
-	
-
 	@Override
 	protected void onReset() {
 		super.onReset();
 	}
 
 	@Override
-	public void save(String portalDomain, String portalIndustry, int widgetIndex) {
+	public void save(String book, String genre, int widgetIndex) {
 		
 		/*dispatcher.execute(service.save(portalDomain, portalIndustry), new AsyncCallback<List<FacetedField>>() {
 			@Override
@@ -129,7 +126,7 @@ public class BooksClassifierPresenter extends Presenter<BooksClassifierPresenter
 			}
 		});*/
 		
-		logger.fine("domain: " +portalDomain + "  portalIndustry: " + portalIndustry); 
+		logger.fine("change=  Book: " +book + "  genre: " + genre); 
 		
 	}
 

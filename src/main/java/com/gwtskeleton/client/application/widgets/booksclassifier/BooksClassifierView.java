@@ -120,7 +120,7 @@ public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHan
 			lgi.setType(ListGroupItemType.DEFAULT);
 			event.preventDefault();
 			
-			Badge badge = ((Badge)(lgi.getWidget(0)));
+			Badge badge = ((Badge)(lgi.getWidget(1)));
 			int currentNum = Integer.valueOf(badge.getText());
 			badge.setText(String.valueOf(currentNum+1));
 			
@@ -135,7 +135,7 @@ public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHan
 		  
 		@Override
 		public void onDragLeave(DragLeaveEvent event) {
-			logger.fine("drag leave");
+			logger.info("drag leave");
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
 			lgi.setType(ListGroupItemType.DEFAULT);
 			lgi.removeStyleName(style.dragInProcess());
@@ -147,6 +147,7 @@ public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHan
 
 		@Override
 		public void onDragStart(DragStartEvent event) {
+			logger.info("drag start");
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
 			event.setData("data", lgi.getText());	
 		}
