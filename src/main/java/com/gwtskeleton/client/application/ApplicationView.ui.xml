@@ -2,43 +2,86 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
 
-    <ui:with field="nameTokens" type="com.gwtskeleton.client.application.place.NameTokens"/>
-    
-     <ui:style>
-        .push {
-            padding-top: 70px;
-        }
-    </ui:style>
-    <g:ScrollPanel>
-        <b:Container>
-            <b:Navbar position="FIXED_TOP">
-                 <b:Container>
-                    <b:NavbarHeader>
-                        <b:NavbarBrand targetHistoryToken="{nameTokens.home}" ui:field="brand">GWT Skeleton!
-                        </b:NavbarBrand>
-                        <b:NavbarCollapseButton dataTarget="#navbar-collapse"/>
-                    </b:NavbarHeader>
-                     <b:NavbarCollapse b:id="navbar-collapse">
-                        <b:NavbarNav>
-                            <b:AnchorListItem text="dropdown" targetHistoryToken="{nameTokens.dropdown}"/>
-                        </b:NavbarNav>
-                         <b:NavbarNav>
-                            <b:AnchorListItem text="classifier" targetHistoryToken="{nameTokens.classifier}"/>
-                        </b:NavbarNav>
-                     </b:NavbarCollapse>   
-                 </b:Container>
-      </b:Navbar> 
-	        <b:Navbar styleName="sidebar">
-	            
-	            
-	        </b:Navbar>
-	            
-            <!-- Container Content -->
-            <g:SimplePanel addStyleNames="{style.push}" ui:field="contentContainer"/>
+	<ui:with field="nameTokens"	type="com.gwtskeleton.client.application.place.NameTokens" />
+	<ui:style >
+	.push {
+		padding-top: 70px;
+	}
 
-    </b:Container>
+	/* make sidebar nav vertical 
+	@media ( min-width : 768px) {*/
+	
+		.sidebar-nav .navbar .navbar-collapse {
+			padding: 0;
+			max-height: none;
+		}
+		.sidebar-nav .navbar ul {
+			float: none;
+		}
+		.sidebar-nav .navbar ul:not {
+			display: block;
+		}
+		.sidebar-nav .navbar li {
+			float: none;
+			display: block;
+		}
+		.sidebar-nav .navbar li a {
+			padding-top: 12px;
+			padding-bottom: 12px;
+		}
+	
+	</ui:style>
 
-    </g:ScrollPanel>          
+		<b:Container>
+			<b:Navbar>
+				<b:NavbarHeader>
+					<b:NavbarBrand targetHistoryToken="{nameTokens.home}"
+						ui:field="brand">GWT Skeleton!
+					</b:NavbarBrand>
+					<b:NavbarCollapseButton dataTarget="#navbar-collapse" />
+				</b:NavbarHeader>
+				<b:NavbarCollapse b:id="navbar-collapse" >
+					<b:NavbarNav>
+						<b:AnchorListItem text="dropdown"
+							targetHistoryToken="{nameTokens.dropdown}" />
+					</b:NavbarNav>
+					<b:NavbarNav>
+						<b:AnchorListItem text="classifier"
+							targetHistoryToken="{nameTokens.classifier}" />
+					</b:NavbarNav>
+				</b:NavbarCollapse>
+
+			</b:Navbar>
+
+			<b:Row>
+				<b:Column size="SM_3">
+					<g:SimplePanel styleName="{style.sidebar-nav}">
+						<b:Navbar>
+								<b:NavbarHeader>
+									<b:NavbarBrand> LATERAL MENU
+									</b:NavbarBrand>
+									<b:NavbarCollapseButton dataTarget="#navbar-collapse" />
+								</b:NavbarHeader>
+								<b:NavbarCollapse b:id="navbar-collapse">
+									<b:NavbarNav>
+										<b:AnchorListItem text="dropdown" 	targetHistoryToken="{nameTokens.dropdown}" />
+										<b:AnchorListItem text="test2" 	targetHistoryToken="{nameTokens.dropdown}" />
+										<b:AnchorListItem text="test3" 	 />
+										<b:AnchorListItem text="test4" 	 />
+										<b:AnchorListItem text="test5" 	 />
+									</b:NavbarNav>
+								</b:NavbarCollapse>
+							</b:Navbar>
+					</g:SimplePanel>
+				</b:Column>
+				<b:Column size="SM_9">
+					<!-- Container Content -->
+					<g:SimplePanel addStyleNames="{style.push}" ui:field="contentContainer" />
+				</b:Column>
+
+			</b:Row>
+
+		</b:Container>
 
 </ui:UiBinder>
 

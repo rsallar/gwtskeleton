@@ -36,6 +36,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
 
+    
     @Inject
     ApplicationView(final Binder binder) {
         initWidget(binder.createAndBindUi(this));
