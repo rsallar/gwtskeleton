@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -32,6 +34,18 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     
     @UiField
     SimplePanel contentContainer;
+    
+    @UiField
+    Resources res;
+      
+    interface Style extends CssResource { 
+    	
+    }
+    
+    public interface Resources extends ClientBundle {
+    	@Source("ApplicationView.css")
+    	public Style style();
+    }
 
     interface Binder extends UiBinder<Widget, ApplicationView> {
     }
@@ -40,6 +54,7 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     @Inject
     ApplicationView(final Binder binder) {
         initWidget(binder.createAndBindUi(this));
+        res.style().ensureInjected();
     }
 
     @Override
