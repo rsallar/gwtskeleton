@@ -21,7 +21,7 @@
   <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
   <inherits name="com.google.gwt.logging.Logging"/>
   
-  <!-- <inherits name="com.google.gwt.resources.GssResource"/>-->
+  <inherits name="com.google.gwt.resources.GssResource"/>
   
   <!-- Specify the app entry point class.                         -->
  

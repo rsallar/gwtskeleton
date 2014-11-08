@@ -40,10 +40,19 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     public interface MyProxy extends ProxyPlace<HomePresenter> {
     }
 
-    @Inject
+    @Inject 
     public HomePresenter(final EventBus eventBus,
                          final MyView view,
                          final MyProxy proxy) {
         super(eventBus, view, proxy, ApplicationPresenter.MAIN_SLOT);
     }
+    
+    
+    @Override
+	protected void onBind(){
+    	
+    	    	
+    	
+    }
+    
 }

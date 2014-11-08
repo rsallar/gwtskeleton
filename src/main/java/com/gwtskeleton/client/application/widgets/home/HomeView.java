@@ -33,4 +33,16 @@ public class HomeView extends ViewImpl implements HomePresenter.MyView {
     HomeView(final Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
     }
+    
+    
+    
+    
+       
+    
+    
+    
+    
+    
+    
+    
 }

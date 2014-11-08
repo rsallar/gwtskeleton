@@ -1,0 +1,53 @@
+@external container sidebar-nav navbar-header navbar-collapse navbar navbar-nav;
+ 
+ .container {
+    padding: 0.8em; 
+  }
+  
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+   width: 100%;
+  }
+}
+
+.sidebar-nav .navbar .navbar-collapse {
+  padding: 0;
+  max-height: none;
+}
+
+.sidebar-nav .navbar-header {
+  float: none;
+}
+
+.sidebar-nav .navbar-nav{
+  margin: 0;
+}
+
+.sidebar-nav .navbar ul {
+  float: none;
+}
+
+.sidebar-nav .navbar ul:not {
+  display: block;
+}
+
+.sidebar-nav .navbar li {
+  float: none;
+  display: block;
+}
+
+.sidebar-nav .navbar li a {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+

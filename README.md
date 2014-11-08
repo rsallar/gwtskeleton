@@ -3,18 +3,20 @@ gwtskeleton
 
 Test skeleton for gwtp project
 
-
 PREREQUISITES
 
-eclipse luna with plugins:
+Eclipse luna with plugins:
 GWT -> https://dl.google.com/eclipse/plugin/4.4
 
 HOW TO START
 
-Try just to run the run_dev_mode.launch in the root of the project.
+Right click to gwtskeleton.gwt.xml -> run as  GWT super dev mode-
+If an error showed like "Missing required argument 'module[s]'", edit your newly created eclipse run task (Run configurations -> index.html), go to GWT tab and add module gwtskeleton. 
+
+WHAT TO LOOK
+
 When everything is working: check BooksClassifierXXX.java
 Check the Rest service in Presenter and check how the View works.
-
 
 Projects which are being used:
 

@@ -4,6 +4,7 @@
 
 	<ui:with field="nameTokens"	type="com.gwtskeleton.client.application.place.NameTokens" />
 	
+
 	<ui:with field='res' type='com.gwtskeleton.client.application.ApplicationView.Resources'/> 
 	
 		<b:Container>

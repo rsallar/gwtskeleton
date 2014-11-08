@@ -22,6 +22,7 @@ import javax.inject.Inject;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.GssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -38,12 +39,12 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
     @UiField
     Resources res;
       
-    interface Style extends CssResource { 
+    interface Style extends GssResource { 
     	
     }
     
     public interface Resources extends ClientBundle {
-    	@Source("ApplicationView.css")
+    	@Source("ApplicationView.gss")
     	public Style style();
     }
 

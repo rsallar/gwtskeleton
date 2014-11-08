@@ -38,7 +38,10 @@ import com.google.gwt.event.dom.client.DragStartEvent;
 import com.google.gwt.event.dom.client.DragStartHandler;
 import com.google.gwt.event.dom.client.DropEvent;
 import com.google.gwt.event.dom.client.DropHandler;
+import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.GssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
@@ -48,30 +51,47 @@ import com.gwtskeleton.shared.Book;
 public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHandlers> implements BooksClassifierPresenter.MyView {
 	interface Binder extends UiBinder<Widget, BooksClassifierView> {
 	}
+
+	interface Style extends GssResource { 
+		String dragIcon();
+		String hovered();
+		String dragInProcess();
+		String fluid();
+	}
+
+	public interface Resources extends ClientBundle {
+		@Source("BooksClassifier.gss")
+		public Style style();
+
+		@Source("/images/drag-icon.cur")
+		DataResource dragIcon();
+	}
+
 	Logger logger = Logger.getLogger(BooksClassifierView.class.getName());
 	@UiField
 	ListGroup list1;
 
 	@UiField
 	ListGroup list2;
-	
-	@UiField ClassifierViewStyle style;
-	
+
 	private List<ListGroupItem> items = new ArrayList<>();
-	
+
 	public interface ClassifierViewStyle extends CssResource {
-	    String hovered();
-	    String dragInProcess();
-	    String fluid();
+
 	}
+
+	Resources res;
 
 	@Inject
-	BooksClassifierView(Binder uiBinder) {
+	BooksClassifierView(Binder uiBinder, Resources res) {
 		logger.fine("building classifier view");
-
+		this.res = res;
 		initWidget(uiBinder.createAndBindUi(this));
+		res.style().ensureInjected();
+		
+		list1.addStyleName(res.style().dragIcon());
 	}
-	
+
 	@Override
 	public void addBooks(List<Book> books) {
 		for(Book book : books){
@@ -82,67 +102,67 @@ public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHan
 			list1.add(item);	
 		}
 	}
-	
-	
+
+
 	@Override
 	public void addGenres(List<String> genres) {
-		
+
 		for(String genre: genres){
 			ListGroupItem item = new ListGroupItem();
 			item.setText(genre);
 			Badge badge = new Badge();
 			badge.setText(String.valueOf(0));
-						
+
 			item.add(badge);
 			item.addDomHandler(dropHandler, DropEvent.getType());
 			item.addDomHandler(dragLeaveHandler, DragLeaveEvent.getType());
 			item.addDomHandler(dragEnterHandler, DragEnterEvent.getType());
 			item.addDomHandler(dragOverHandler, DragOverEvent.getType());
-									
+
 			list2.add(item);
 		}
-		
+
 	}
-	
+
 	private DragOverHandler dragOverHandler = new DragOverHandler(){
 
 		@Override
 		public void onDragOver(DragOverEvent event) {
 			//VOID on purpose. This handler is needed.
 		}
-		
+
 	};
-	
+
 	private DropHandler dropHandler = new DropHandler() {
 		@Override
 		public void onDrop(DropEvent event) {
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
 			lgi.setType(ListGroupItemType.DEFAULT);
 			event.preventDefault();
-			
+
 			Badge badge = ((Badge)(lgi.getWidget(1)));
 			int currentNum = Integer.valueOf(badge.getText());
 			badge.setText(String.valueOf(currentNum+1));
-			
+
 			String genre = event.getData("data");
 			getUiHandlers().save(genre ,lgi.getText(), items.indexOf(lgi));
 
 			event.getSource();
 		}
 	};
-	
+
 	private DragLeaveHandler dragLeaveHandler = new DragLeaveHandler() {
-		  
+
 		@Override
 		public void onDragLeave(DragLeaveEvent event) {
 			logger.info("drag leave");
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
 			lgi.setType(ListGroupItemType.DEFAULT);
-			lgi.removeStyleName(style.dragInProcess());
-			
+			lgi.removeStyleName(res.style().dragInProcess());
+
 		}
 	};
-	
+
 	private DragStartHandler dragStartHandler = new DragStartHandler(){
 
 		@Override
@@ -153,18 +173,18 @@ public class BooksClassifierView extends ViewWithUiHandlers<BooksClassifierUiHan
 		}
 
 	};
-		
+
 	private DragEnterHandler dragEnterHandler = new DragEnterHandler() {
-		  
+
 		@Override
 		public void onDragEnter(DragEnterEvent event) {
 			ListGroupItem lgi = (ListGroupItem) event.getSource();
 			items.add(lgi);
 			lgi.setType(ListGroupItemType.WARNING);		
-			lgi.addStyleName(style.dragInProcess());
+			lgi.addStyleName(res.style().dragInProcess());
 		}
 	};
 
-	
+
 
 }

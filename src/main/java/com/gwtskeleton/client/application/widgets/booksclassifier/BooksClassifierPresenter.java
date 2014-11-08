@@ -39,6 +39,8 @@ public class BooksClassifierPresenter extends Presenter<BooksClassifierPresenter
 	@NameToken(NameTokens.CLASSIFIER)
 	@ProxyCodeSplit
 	public interface MyProxy extends ProxyPlace<BooksClassifierPresenter> {
+		
+				
 	}
 
 	Logger logger = Logger.getLogger(BooksClassifierPresenter.class.getName());
